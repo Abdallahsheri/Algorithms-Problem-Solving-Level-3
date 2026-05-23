@@ -1,0 +1,81 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include "MyLib.h"
+#include <iomanip>
+#include <cctype>
+#include <fstream>
+using namespace std;
+
+//Problem #12 Check Typical Metrices
+
+int RandomNumbers(int From , int To)
+{
+    int RandNum = rand() % (To - From + 1) + From;
+    return RandNum;
+}
+
+void FillMatrixWithRandomNumber(int arr[3][3], short Rows, short Cols)
+{
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            arr[i][j] = RandomNumbers(1,100);
+        }
+    }
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            cout << setw(3) << arr[i][j] << "    ";
+        }
+        cout << endl;
+    }
+}
+
+bool AreTypicalMatrices(int arr1[3][3], int arr2[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            if (arr1[i][j] != arr2[i][j])
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+int main() {
+ 
+    srand((unsigned)time(NULL));
+    int arr1[3][3], arr2[3][3];
+    
+    FillMatrixWithRandomNumber(arr1,3,3);
+    cout << " Matrix 1 : " << endl;
+    PrintMatrix(arr1,3,3);
+
+    FillMatrixWithRandomNumber(arr2,3,3);
+    cout << " Matrix 2 : " << endl;
+    PrintMatrix(arr2, 3, 3);
+
+    if (AreTypicalMatrices(arr1,arr2,3,3))
+    {
+        cout << " Yes, Both Matrices Are Typical : " << endl;
+    }
+    else
+    {
+        cout << "No, Matrices Are NOT Typical : " << endl;
+    }
+    system("pause>0");
+}
