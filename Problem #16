@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include "MyLib.h"
+#include <iomanip>
+#include <cctype>
+#include <fstream>
+using namespace std;
+
+//Problem #16 Check Sparse Matrix
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            cout << setw(3) << arr[i][j] << "   ";
+        }
+        cout << endl << endl;
+    }
+}
+
+short CountNumberInMatrix(int Matrix1[3][3], short Rows, short Cols, int Number)
+{
+    short NumberCount = 0;
+
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            if (Matrix1[i][j] == Number)
+            {
+                NumberCount++;
+            }
+        }
+    }
+    return NumberCount;
+}
+
+bool IsSparsematrix(int Matrix1[3][3], short Rows, short Cols)
+{
+    short MatrixSize = Rows * Cols;
+
+    return (CountNumberInMatrix(Matrix1, 3, 3, 0) >= (MatrixSize / 2));
+}
+
+int main() {
+ 
+    srand((unsigned)time(NULL));
+    
+    int Matrix1[3][3] = { {0,0,12}, {9,9,1}, {0,0,9} };
+
+    cout << "Matrix 1 : " << endl;
+    PrintMatrix(Matrix1,3,3);
+    
+    if (IsSparsematrix(Matrix1,3,3))
+    {
+        cout << "Yes, It Is A Sparse Matrix. " << endl;
+    }
+    else
+    {
+        cout << "No, It Is Not A Sparse Matrix. " << endl;
+    }
+
+    system("pause>0");
+}
