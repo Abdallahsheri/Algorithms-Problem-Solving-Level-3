@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include "MyLib.h"
+#include <iomanip>
+#include <cctype>
+#include <fstream>
+using namespace std;
+
+//Problem #21 Fibonacci Series.
+
+void PrintFibonacciUsingLoop(short Number)
+{
+    int FibNumber = 0;
+
+    int Prev2 = 0, Prev1 = 1;
+
+    cout << "1   ";
+
+    for (short i = 2; i <= Number; ++i)
+    {
+        FibNumber = Prev1 + Prev2;
+        cout << FibNumber << "  ";
+        Prev2 = Prev1;
+        Prev1 = FibNumber;
+    }
+}
+
+
+int main() {
+   
+    PrintFibonacciUsingLoop(10);
+
+
+    system("pause>0");
+}
