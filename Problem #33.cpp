@@ -32,7 +32,7 @@ short CountVowelLetters(string S1)
 
     for (short i = 0; i < S1.length(); i++)
     {
-        if (IsVowel)
+        if (IsVowel(S1[i]))
         {
             Counter++;
 
